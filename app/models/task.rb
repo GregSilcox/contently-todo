@@ -2,4 +2,5 @@
 
 class Task < ActiveRecord::Base
   validates :name, presence: true
-  end
+  validates :completed, presense: false, on: :create
+end
