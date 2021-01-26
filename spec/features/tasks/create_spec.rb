@@ -22,4 +22,10 @@ feature 'Creating a task' do
 
     expect(page).to have_content("Name can't be blank")
   end
+  
+  scenario 'does not display the completed checkbox' do
+    visit new_task_path
+
+    expect(page).to_not have_content('Completed')
+  end
 end
