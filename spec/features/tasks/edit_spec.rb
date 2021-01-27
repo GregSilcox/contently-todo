@@ -3,7 +3,9 @@
 require 'rails_helper'
 
 feature 'Editing a task' do
-  let!(:task) { Task.create(name: 'Test my app', completed: false) }
+  let(:list) { create :list }
+  let!(:task) { create :task, list: list, name: 'Test my app' }
+
 
   scenario 'redirects to the tasks index page on success' do
     visit tasks_path

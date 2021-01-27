@@ -3,11 +3,12 @@
 require 'rails_helper'
 
 feature 'Showing the task list' do
-  let!(:task) { FactoryBot.create :task }
-  let!(:task) { FactoryBot.create :task }
+  let(:list) { create :list }
+  
   before do
-    FactoryBot.create :task, name: 'task-incomplete', completed: false
-    FactoryBot.create :task, name: 'task-complete', completed: true
+    create :task, list: list, name: 'task-incomplete'
+    completed = create :task, list: list, name: 'task-complete'
+    completed.update completed: true
   end
 
   scenario 'shows all three links' do

@@ -3,29 +3,33 @@
 require 'rails_helper'
 
 describe Task, type: :model do
+  let(:list) { build :list, name: 'test_list' }
+  let(:task) { build :task, list: list }
+
   context 'with no name' do
-    it 'is invalid' do
-      task = Task.new
-      expect(task).to_not be_valid
-    end
+    let(:nameless_task) { build :task, list: list, name: nil }
+
+    it { expect(nameless_task).to_not be_valid }
   end
 
   context 'on create' do
-    it 'is not valid when completed' do
-      task = Task.new completed: true
-      expect(task).to_not be_valid
+    context 'a completed task' do
+      let(:complete_task) { build :task, list: list, completed: true }
+
+      it { expect(complete_task).to_not be_valid }
     end
-    
-    it 'is valid when not completed' do
-      task = Task.new completed: false
-      expect(task).to_not be_valid
+
+    context 'an incomplete task' do
+      let(:incomplete_task) { build :task, list: list }
+      it { expect(incomplete_task).to be_valid }
     end
   end
 
   context 'scopes' do
     before do
-      FactoryBot.create :task, name: 'done', completed: true
-      FactoryBot.create :task, name: 'started', completed: false
+      task1 = create :task, list: list, name: 'done'
+      task1.update completed: true
+      create :task, list: list, name: 'started'
     end
     
     context 'for complete' do

@@ -3,6 +3,8 @@
 require 'rails_helper'
 
 feature 'Creating a task' do
+  let(:list) { create :list }
+
   scenario 'redirects to the tasks index page on success' do
     visit tasks_path
     click_on 'Add a task'
