@@ -1,5 +1,11 @@
 %h1 Tasks
 
+%div#task-choice
+  %span#label Show:
+  %span=link_to 'All', tasks_path(show: :all)
+  %span=link_to 'Complete', tasks_path(show: :complete)
+  %span=link_to 'Incomplete', tasks_path(show: :incomplete)
+
 %table
   %thead
     %tr

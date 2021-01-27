@@ -6,7 +6,14 @@ class TasksController < ApplicationController
   # GET /tasks
   # GET /tasks.json
   def index
-    @tasks = Task.all
+    @tasks = case params['show'] 
+      when 'complete'
+        Task.complete
+      when 'incomplete'
+        Task.incomplete
+      else
+        Task.all
+      end
   end
 
   # GET /tasks/1
@@ -25,6 +32,7 @@ class TasksController < ApplicationController
   # POST /tasks.json
   def create
     @task = Task.new(task_params)
+    @task.completed = false
 
     respond_to do |format|
       if @task.save
