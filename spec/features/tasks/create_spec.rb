@@ -3,7 +3,7 @@
 require 'rails_helper'
 
 feature 'Creating a task' do
-  let(:list) { create :list }
+  let!(:list) { create :list }
 
   scenario 'redirects to the tasks index page on success' do
     visit tasks_path
@@ -11,6 +11,7 @@ feature 'Creating a task' do
     expect(page).to have_content('Create a task')
 
     fill_in 'Name', with: 'Test my app'
+    select 'MyString'
     click_button 'Save'
 
     expect(page).to have_content('Tasks')
