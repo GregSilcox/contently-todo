@@ -1,7 +1,7 @@
 =form_for @model do |f|
   -if @model.errors.any?
     #error_explanation
-      %h2="#{pluralize(@model.errors.count, "error")} prohibited this task from being saved:"
+      %h2="#{pluralize(@model.errors.count, "error")} prohibited this list from being saved:"
       %ul
         -@model.errors.full_messages.each do |msg|
           %li= msg
@@ -9,14 +9,6 @@
   .field
     =f.label :name
     =f.text_field :name
-
-  -if @model.persisted?
-    .field
-      =f.label :completed
-      =f.check_box :completed
-
-  .field
-    =f.select :list, List.all
 
   .actions
     =f.submit 'Save'
