@@ -21,4 +21,21 @@ describe Task, type: :model do
       expect(task).to_not be_valid
     end
   end
+
+  context 'scopes' do
+    before do
+      FactoryBot.create :task, name: 'done', completed: true
+      FactoryBot.create :task, name: 'started', completed: false
+    end
+    
+    context 'for complete' do
+      it { expect(Task.complete.count).to eq 1 }
+      it { expect(Task.complete.first.name).to eq 'done' }
+    end
+    
+    context 'for incomplete' do
+      it { expect(Task.incomplete.count).to eq 1 }
+      it { expect(Task.incomplete.first.name).to eq 'started' }
+    end
+  end
 end
