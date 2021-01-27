@@ -11,8 +11,10 @@ class TasksController < ApplicationController
         Task.complete
       when 'incomplete'
         Task.incomplete
-      else
+      when 'all'
         Task.all
+      else
+        Task.incomplete
       end
   end
 
