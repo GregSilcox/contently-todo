@@ -1,0 +1,15 @@
+%p#notice=notice
+
+%p
+  %b List:
+  =@model.name
+
+%p
+  %b Tasks
+
+=render partial: 'tasks/tasks_table', locals: { tasks: @model.tasks }
+
+
+=link_to 'Edit', edit_list_path(@model)
+\|
+=link_to 'Back', lists_path

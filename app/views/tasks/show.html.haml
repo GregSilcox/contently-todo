@@ -7,6 +7,10 @@
   %b Completed:
   =@model.completed
 
+%p
+  %b List
+  =@model.list&.name
+
 =link_to 'Edit', edit_task_path(@model)
 \|
 =link_to 'Back', tasks_path

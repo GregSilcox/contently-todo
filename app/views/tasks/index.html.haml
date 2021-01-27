@@ -6,23 +6,10 @@
   %span=link_to 'Complete', tasks_path(show: :complete)
   %span=link_to 'Incomplete', tasks_path(show: :incomplete)
 
-%table
-  %thead
-    %tr
-      %th Name
-      %th Completed
-      %th
-      %th
-      %th
+%p
+  %b Tasks
 
-  %tbody
-    - @models.each do |task|
-      %tr
-        %td=task.name
-        %td=task.completed
-        %td=link_to 'Show', task
-        %td=link_to 'Edit', edit_task_path(task)
-        %td=link_to 'Destroy', task, :method => :delete, :data => { :confirm => 'Are you sure?' }
+=render partial: 'tasks_table', locals: { tasks: @models }
 
 %br
 

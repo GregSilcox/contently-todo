@@ -16,7 +16,7 @@
       =f.check_box :completed
 
   .field
-    =f.select :list, List.all
+    =f.collection_select :list_id, List.all, :id, :name
 
   .actions
     =f.submit 'Save'
