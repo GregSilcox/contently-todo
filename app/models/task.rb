@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class Task < ActiveRecord::Base
+  belongs_to :list
+  
   validates :name, presence: true
   validates :completed, presense: false, on: :create
 
