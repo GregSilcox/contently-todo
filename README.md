@@ -1,5 +1,15 @@
 # Technical Assessment - Ruby on Rails
 
+## Documentation of new features
+
+Several new features have been added to the project which require some explanation.
+- A task must be on a list, so it is important to create at least one list first.
+- To create a list go to the lists page using the menu and click 'Add a List'
+- To create a task go to the tasks page using the menu and click 'Add a Task'
+- To change which list a task is on, got to the Tasks page, select edit next to the task to change, then slect the target list from the drop down.
+- To see all the tasks on a specific list, from the Lists page select show for the desired list and its tasks will be listed there.
+- The status of a task can only be completed when editing a task.
+
 ## Summary
 
 The purpose of this short assessment is to gain some initial insight in to your
