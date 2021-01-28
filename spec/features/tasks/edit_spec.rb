@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require 'rails_helper'
+require 'shared_examples'
 
 feature 'Editing a task' do
   let(:list) { create :list }
@@ -19,13 +20,7 @@ feature 'Editing a task' do
     expect(page).to have_content('Test my app (updated)')
   end
 
-  scenario 'displays an error when no name is provided' do
-    visit edit_task_path(task)
-    fill_in 'Name', with: ''
-    click_button 'Save'
-
-    expect(page).to have_content("Name can't be blank")
-  end
+  include_examples 'save task with blank name', "/tasks/1/edit"
 
   scenario 'lets the user complete a task' do
     visit edit_task_path(task)

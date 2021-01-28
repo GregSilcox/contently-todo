@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require 'rails_helper'
+require 'shared_examples'
 
 feature 'Creating a task' do
   let!(:list) { create :list }
@@ -18,13 +19,7 @@ feature 'Creating a task' do
     expect(page).to have_content('Test my app')
   end
 
-  scenario 'displays an error when no name is provided' do
-    visit new_task_path
-    fill_in 'Name', with: ''
-    click_button 'Save'
-
-    expect(page).to have_content("Name can't be blank")
-  end
+  include_examples 'save task with blank name', '/tasks/new'
   
   scenario 'does not display the completed checkbox' do
     visit new_task_path
