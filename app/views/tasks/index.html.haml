@@ -1,22 +1,15 @@
 %h1 Tasks
 
-%table
-  %thead
-    %tr
-      %th Name
-      %th Completed
-      %th
-      %th
-      %th
+%div#task-choice
+  %span#label Show:
+  %span=link_to 'All', tasks_path(show: :all)
+  %span=link_to 'Complete', tasks_path(show: :complete)
+  %span=link_to 'Incomplete', tasks_path(show: :incomplete)
 
-  %tbody
-    - @tasks.each do |task|
-      %tr
-        %td=task.name
-        %td=task.completed
-        %td=link_to 'Show', task
-        %td=link_to 'Edit', edit_task_path(task)
-        %td=link_to 'Destroy', task, :method => :delete, :data => { :confirm => 'Are you sure?' }
+%p
+  %b Tasks
+
+=render partial: 'tasks_table', locals: { tasks: @models }
 
 %br
 

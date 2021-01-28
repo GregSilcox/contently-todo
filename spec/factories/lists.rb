@@ -1,9 +1,7 @@
 # frozen_string_literal: true
 
 FactoryBot.define do
-  factory :task do
-    list
+  factory :list do
     name { 'MyString' }
-    completed { false }
   end
 end
